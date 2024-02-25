@@ -1,6 +1,10 @@
 # Computer_Vision
+## Video Data
+## Image Features
+## Object Detection
+## Object Tracking
 
-### matlab Onramp commnds
+### Matlab Onramp commnds
 - v = VideoReader(filename)
 - fr = readFrame(v); => read frame from the video file
 - prop = obj.PropertyName
@@ -22,11 +26,18 @@
 - match the features using the matchFeatures function.
   - indexedPairs = matchFeatures(feat1,feat2)
  
+-  draw bounding boxes on an image by using the insertObjectAnnotation function.
+  - imNew = insertObjectAnnotation(im, ...    shape,pos,label);
+- create training images from a video file using the objectDetectorTrainingData function.
+  - [ims,labs] = objectDetectorTrainingData( ...     gTruth,SamplingFactor=n);
 
-
-
-
-
-
-
+- combine the images and labels with the combine function.
+  - imsWithLabels = combine(ims,labs);
+- Aggregate channel features (ACF) object detectors use features from color channels and other 2D representations of an image to detect objects.
+  - create an ACF detector trained with your ground truth images using the trainACFObjectDetector function.
+  - d = trainACFObjectDetector(imsWithLabels)
+- apply a detector to an image by using the detect function.
+  - [b,s] = detect(detector,im)
+-  draw bounding boxes on an image by using the insertObjectAnnotation function.
+  - imNew = insertObjectAnnotation(im, ...     shape,pos,label);
 
